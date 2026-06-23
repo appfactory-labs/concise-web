@@ -166,7 +166,7 @@ export default function Home() {
             </Link>
             <Link href={appConfig.supportPath}>
               <span>Support</span>
-              <p>Contact App Factory Labs at {appConfig.supportEmail} for help.</p>
+              <p>Send a private support request for help with Concise.</p>
             </Link>
           </div>
         </div>

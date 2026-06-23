@@ -1,9 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { appConfig } from "@/lib/app-config";
 
-type FormStatus = "idle" | "opened";
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 function readField(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -12,30 +11,42 @@ function readField(formData: FormData, key: string) {
 
 export function SupportForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const name = readField(formData, "name");
-    const email = readField(formData, "email");
-    const platform = readField(formData, "platform");
-    const subject = readField(formData, "subject");
-    const message = readField(formData, "message");
+    const payload = {
+      name: readField(formData, "name"),
+      email: readField(formData, "email"),
+      platform: readField(formData, "platform"),
+      subject: readField(formData, "subject"),
+      message: readField(formData, "message")
+    };
 
-    const mailSubject = subject ? `Concise support: ${subject}` : "Concise support request";
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Platform: ${platform}`,
-      "",
-      message
-    ].join("\n");
+    setStatus("submitting");
+    setError("");
 
-    window.location.href = `mailto:${appConfig.supportEmail}?subject=${encodeURIComponent(
-      mailSubject
-    )}&body=${encodeURIComponent(body)}`;
-    setStatus("opened");
+    try {
+      const response = await fetch("/api/support", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error("Support request failed");
+      }
+
+      event.currentTarget.reset();
+      setStatus("success");
+    } catch {
+      setStatus("error");
+      setError("Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -73,16 +84,14 @@ export function SupportForm() {
         <textarea id="support-message" name="message" rows={6} required />
       </div>
 
-      <button className="form-submit" type="submit">
-        Open email
+      <button className="form-submit" disabled={status === "submitting"} type="submit">
+        {status === "submitting" ? "Sending..." : "Send message"}
       </button>
 
-      {status === "opened" ? (
-        <p className="form-success">
-          Your email app should open with a prefilled support request. You can also email{" "}
-          <a href={`mailto:${appConfig.supportEmail}`}>{appConfig.supportEmail}</a> directly.
-        </p>
+      {status === "success" ? (
+        <p className="form-success">Thanks, your support request has been sent.</p>
       ) : null}
+      {status === "error" ? <p className="form-error">{error}</p> : null}
     </form>
   );
 }

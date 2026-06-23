@@ -18,10 +18,6 @@ export default function SupportPage() {
             Send a note about readability checks, local drafts, highlighted previews, copy actions,
             or anything else in the app.
           </p>
-          <div className="support-email-panel">
-            <span>Email support</span>
-            <a href={`mailto:${appConfig.supportEmail}`}>{appConfig.supportEmail}</a>
-          </div>
           <ul className="support-notes">
             <li>No login is required to use Concise.</li>
             <li>Core writing checks run on device.</li>

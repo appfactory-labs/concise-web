@@ -6,7 +6,6 @@ export const appConfig = {
   description:
     "Instant, on-device feedback for readability, passive voice, hard sentences, adverbs, complex words, wordy phrases, and weak qualifiers.",
   company: "App Factory Labs",
-  supportEmail: "buildappfactory@gmail.com",
   supportPath: "/support",
   privacyPath: "/privacy",
   termsPath: "/terms",

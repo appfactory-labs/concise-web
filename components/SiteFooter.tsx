@@ -17,9 +17,6 @@ export function SiteFooter() {
           <Link href={appConfig.termsPath}>Terms</Link>
           <Link href={appConfig.supportPath}>Support</Link>
         </nav>
-        <a className="footer-email" href={`mailto:${appConfig.supportEmail}`}>
-          {appConfig.supportEmail}
-        </a>
         <p className="copyright">Copyright 2026 {appConfig.company}. All rights reserved.</p>
       </div>
     </footer>

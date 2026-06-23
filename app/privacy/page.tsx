@@ -37,7 +37,7 @@ const sections = [
   {
     title: "Support Requests",
     body: [
-      `If you contact support at ${appConfig.supportEmail}, we use the information you send only to understand and respond to your request.`,
+      "If you contact support through the support form, we use the information you send only to understand and respond to your request.",
       "Please avoid sending sensitive personal information in support emails unless it is necessary for the issue you want help with."
     ]
   },

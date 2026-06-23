@@ -118,14 +118,12 @@ main {
 }
 
 .site-nav a,
-.site-footer nav a,
-.footer-email {
+.site-footer nav a {
   transition: color 170ms ease;
 }
 
 .site-nav a:hover,
-.site-footer nav a:hover,
-.footer-email:hover {
+.site-footer nav a:hover {
   color: var(--green-deep);
 }
 
@@ -541,7 +539,7 @@ main {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   gap: 28px;
   align-items: start;
   padding: 34px 0;
@@ -557,11 +555,6 @@ main {
 .footer-brand-block p {
   margin: 12px 0 0;
   color: var(--muted);
-}
-
-.footer-email {
-  color: var(--muted-strong);
-  font-weight: 650;
 }
 
 .copyright {
@@ -597,8 +590,7 @@ main {
 }
 
 .legal-content section,
-.support-panel,
-.support-email-panel {
+.support-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   background: #ffffff;
@@ -637,8 +629,7 @@ main {
   color: var(--muted);
 }
 
-.legal-contact a,
-.form-success a {
+.legal-contact a {
   color: var(--green-deep);
   font-weight: 760;
   text-decoration: underline;
@@ -662,25 +653,6 @@ main {
   max-width: 520px;
   margin: 18px 0 0;
   font-size: 1.08rem;
-}
-
-.support-email-panel {
-  display: grid;
-  gap: 8px;
-  margin-top: 28px;
-  padding: 22px;
-}
-
-.support-email-panel span {
-  color: var(--muted);
-  font-size: 0.92rem;
-  font-weight: 700;
-}
-
-.support-email-panel a {
-  color: var(--green-deep);
-  font-size: 1.12rem;
-  font-weight: 780;
 }
 
 .support-notes {
@@ -754,10 +726,21 @@ main {
   cursor: pointer;
 }
 
-.form-success {
+.form-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
+.form-success,
+.form-error {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.form-error {
+  color: #b42318;
 }
 
 @keyframes fade-up {
