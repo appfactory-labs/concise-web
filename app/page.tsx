@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DownloadButtons } from "@/components/DownloadButtons";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { appConfig } from "@/lib/app-config";
 
@@ -59,14 +60,7 @@ export default function Home() {
             <p className="hero-tagline">{appConfig.tagline}</p>
             <p className="hero-description">{appConfig.description}</p>
 
-            <div className="hero-actions" aria-label="Concise links">
-              <Link className="button-primary" href={appConfig.privacyPath}>
-                Privacy details
-              </Link>
-              <Link className="button-secondary" href={appConfig.supportPath}>
-                Contact support
-              </Link>
-            </div>
+            <DownloadButtons />
 
             <div className="assurance-list" aria-label="Privacy highlights">
               {assurances.map((item) => (

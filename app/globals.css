@@ -187,6 +187,51 @@ main {
   margin-top: 34px;
 }
 
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.download-actions.compact {
+  justify-content: center;
+}
+
+.download-button {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0 22px;
+  font-size: 1rem;
+  font-weight: 760;
+  transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.download-button:hover {
+  transform: translateY(-2px);
+}
+
+.download-button.primary {
+  border-color: var(--green-deep);
+  background: var(--green-deep);
+  color: #ffffff;
+  box-shadow: 0 16px 30px rgba(22, 71, 47, 0.18);
+}
+
+.download-button.secondary {
+  border-color: var(--border-strong);
+  background: #ffffff;
+  color: var(--green-deep);
+}
+
+.download-button.secondary:hover {
+  border-color: var(--green);
+}
+
 .button-primary,
 .button-secondary,
 .form-submit {
@@ -840,6 +885,11 @@ main {
   .hero-actions,
   .assurance-list {
     display: flex;
+  }
+
+  .download-actions {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .assurance-list {

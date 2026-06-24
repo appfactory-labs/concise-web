@@ -5,6 +5,8 @@ export const appConfig = {
   tagline: "Private writing clarity editor.",
   description:
     "Instant, on-device feedback for readability, passive voice, hard sentences, adverbs, complex words, wordy phrases, and weak qualifiers.",
+  iosUrl: "https://apps.apple.com/app/id6783388958",
+  androidUrl: "https://play.google.com/store/apps/details?id=com.appfactory.concise",
   company: "App Factory Labs",
   supportPath: "/support",
   privacyPath: "/privacy",
